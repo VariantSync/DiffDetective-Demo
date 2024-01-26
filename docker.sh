@@ -18,7 +18,7 @@ demo)
 	demo
 	;;
 *)
-	echo "Usage: $0 {build|bash|demo}"
+	echo "Usage: $0 {build|demo}"
 	echo "build: build the image"
 	echo "demo: execute the demo to view the final results"
 	exit 1
