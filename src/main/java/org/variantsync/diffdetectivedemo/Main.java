@@ -1,4 +1,4 @@
-package org.variantsync.diffdetective;
+package org.variantsync.diffdetectivedemo;
 
 /**
  * Hello world!
