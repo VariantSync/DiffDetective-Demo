@@ -8,6 +8,11 @@ RUN apt-get install -y --no-install-recommends bash maven git
 RUN useradd --create-home --shell /bin/bash user
 RUN mkdir -p /home/user && chown -R user:user /home/user
 
+WORKDIR /home/user
+RUN git clone https://github.com/VariantSync/DiffDetective.git
+WORKDIR /home/user/DiffDetective
+RUN mvn install
+
 # Copy the required artifacts
 WORKDIR /home/user/Demo
 COPY ./src ./
