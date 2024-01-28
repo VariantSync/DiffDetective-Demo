@@ -1,2 +1,2 @@
 #! /bin/bash
-echo "HELLO WORLD!"
+java -cp target/diffdetectivedemo-1.0.0.jar org.variantsync.diffdetectivedemo.Main
