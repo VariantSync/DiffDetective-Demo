@@ -15,6 +15,10 @@ Follow the setup instructions on the [DiffDetective website](https://variantsync
 These instructions make you clone, the repo and install it.
 Afterward, come back here and you should be ready to go.
 
+If you want an empty demo template project to implement the demo yourself, or to use for other purposes, you may
+switch to the `empty` branch.
+The `main` branch contains the full demo source code, instead.
+
 ## Docker Setup
 
 You can use the `docker.sh` script to build and execute the Demo using [Docker](https://www.docker.com/get-started).
