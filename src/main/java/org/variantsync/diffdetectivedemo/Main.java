@@ -30,8 +30,9 @@ public class Main
      * - and finally show all trees and diffs in a GUI.
      */
     private static void inspect(String fileBefore, String fileAfter) throws IOException, DiffParseException {
-        Path pathBefore = Path.of("data", "examples", fileBefore);
-        Path pathAfter  = Path.of("data", "examples", fileAfter);
+        Path examplesDir = Path.of("data", "examples");
+        Path pathBefore  = examplesDir.resolve(fileBefore);
+        Path pathAfter   = examplesDir.resolve(fileAfter);
         
         String textDiff = JGitDiff.textDiff(pathBefore, pathAfter, DiffAlgorithm.SupportedAlgorithm.MYERS);
         System.out.println(textDiff);
