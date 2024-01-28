@@ -3,12 +3,10 @@ package org.variantsync.diffdetectivedemo;
 import org.tinylog.Logger;
 import org.variantsync.diffdetective.analysis.Analysis;
 import org.variantsync.diffdetective.analysis.AnalysisResult;
+import org.variantsync.diffdetective.analysis.SimpleMetadata;
 import org.variantsync.diffdetective.datasets.Repository;
-import org.variantsync.diffdetective.metadata.Metadata;
-import org.variantsync.functjonal.category.InplaceSemigroup;
 
 import java.nio.file.Path;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -18,27 +16,12 @@ import java.util.List;
  */
 public class DemoAnalysis implements Analysis.Hooks {
     private static final AnalysisResult.ResultKey<BigDiffCounter> BIG_DIFF_COUNTER_RESULT_KEY = new AnalysisResult.ResultKey<>("big diffs");
-    private final int IS_BIG_THRESHOLD = 100;
+    private static final int IS_BIG_THRESHOLD = 100;
     private int commits = 0;
     
-    private static class BigDiffCounter implements Metadata<BigDiffCounter> {
-        int numBigDiffs = 0;
-
-        @Override
-        public LinkedHashMap<String, ?> snapshot() {
-            LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
-            map.put("big diffs", numBigDiffs);
-            return map;
-        }
-
-        @Override
-        public void setFromSnapshot(LinkedHashMap<String, String> linkedHashMap) {
-            // skip for now
-        }
-
-        @Override
-        public InplaceSemigroup<BigDiffCounter> semigroup() {
-            return (a, b) -> a.numBigDiffs += b.numBigDiffs;
+    private static class BigDiffCounter extends SimpleMetadata<Integer, BigDiffCounter> {
+        public BigDiffCounter() {
+            super(0, "big diffs", Integer::sum);
         }
     }
 
@@ -58,7 +41,7 @@ public class DemoAnalysis implements Analysis.Hooks {
         var diff = analysis.getCurrentVariationDiff();
         
         if (diff.computeAllNodesThat(node -> node.isAdd() || node.isRem()).size() >= IS_BIG_THRESHOLD) {
-            analysis.get(BIG_DIFF_COUNTER_RESULT_KEY).numBigDiffs++;
+            analysis.get(BIG_DIFF_COUNTER_RESULT_KEY).value++;
         }
         
         return true;
