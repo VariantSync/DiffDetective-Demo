@@ -5,6 +5,10 @@ You may run the demo manually, or by using Docker.
 The manual setup enables you to use DiffDetective in any of your maven projects.
 The Docker setup just runs the demo.
 
+This demo comes with a screencast available on YouTube, guiding you through the demo's setup with Maven in IntelliJ and how to implement variability-aware differencing and analyses of Git histories:
+
+[![DiffDetective Demonstration](docs/yt_thumbnail.png)](https://www.youtube.com/watch?v=q6ight5EDQY)
+
 ## Manual Setup
 
 Required software:
