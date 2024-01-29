@@ -2,7 +2,7 @@ FROM openjdk:23-slim
 
 # Install dependencies
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends bash maven git
+RUN apt-get install -y --no-install-recommends bash maven git graphviz
 
 # Create a user
 RUN useradd --create-home --shell /bin/bash user

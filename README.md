@@ -10,6 +10,7 @@ The Docker setup just runs the demo.
 Required software:
 - [Maven](https://maven.apache.org/) which is also integrated in [Eclipse](https://projects.eclipse.org/projects/technology.m2e) and [Intellij](https://www.jetbrains.com/help/idea/maven-support.html)
 - [JDK](https://www.oracle.com/java/technologies/downloads/) 16 or newer
+- [graphviz](https://graphviz.org/download/)
 
 Follow the setup instructions on the [DiffDetective website](https://variantsync.github.io/DiffDetective/).
 These instructions make you clone, the repo and install it.
