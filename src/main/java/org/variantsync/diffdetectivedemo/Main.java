@@ -11,6 +11,7 @@ import org.variantsync.diffdetective.variation.diff.VariationDiff;
 import org.variantsync.diffdetective.variation.diff.construction.JGitDiff;
 import org.variantsync.diffdetective.variation.diff.parse.VariationDiffParseOptions;
 import org.variantsync.diffdetective.variation.tree.VariationTree;
+import truediffdetective.TrueDiffDetective;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -47,26 +48,20 @@ public class Main
         );
         VariationDiff<DiffLinesLabel> diffViaGumTree = VariationDiff.fromTrees(s1, s2);
         VariationDiff<DiffLinesLabel> diffViaGit = VariationDiff.fromFiles(pathBefore, pathAfter, DiffAlgorithm.SupportedAlgorithm.MYERS, VariationDiffParseOptions.Default);
+        VariationDiff<DiffLinesLabel> diffViaTrueDiff = TrueDiffDetective.compare(s1, s2);
 
         GameEngine.showAndAwaitAll(
-                Show.tree(s1),
-                Show.tree(s2),
-                Show.diff(diffViaGumTree),
-                Show.diff(diffViaGit)
+                Show.tree(s1, "before"),
+                Show.diff(diffViaGit, "diffViaGit"),
+                Show.diff(diffViaTrueDiff, "diffViaTrueDiff"),
+                Show.tree(s2, "after"),
+                Show.diff(diffViaGumTree, "diffViaGumTree")
         );
     }
     
     public static void main( String[] args ) throws IOException, DiffParseException {
         inspect("simple_v1.txt", "simple_v2.txt");
         inspect("vim_evalfunc_v1.txt", "vim_evalfunc_v2.txt");
-        
-        AnalysisRunner.run(
-                new AnalysisRunner.Options(
-                        Path.of("data", "repos"), 
-                        Path.of("data", "output"),
-                        Path.of("data", "demo-dataset.md")
-                ),
-                (repository, path) -> Analysis.forEachCommit(() -> DemoAnalysis.Create(repository, path), 20, 8)                
-        );
+        inspect("truediff_v1.txt", "truediff_v2.txt");
     }
 }
