@@ -10,10 +10,15 @@ import org.variantsync.diffdetective.variation.DiffLinesLabel;
 import org.variantsync.diffdetective.variation.diff.VariationDiff;
 import org.variantsync.diffdetective.variation.diff.construction.JGitDiff;
 import org.variantsync.diffdetective.variation.diff.parse.VariationDiffParseOptions;
+import org.variantsync.diffdetective.variation.diff.view.DiffView;
 import org.variantsync.diffdetective.variation.tree.VariationTree;
+import org.variantsync.diffdetective.variation.tree.view.relevance.Configure;
+import org.variantsync.diffdetective.variation.tree.view.relevance.Trace;
 
 import java.io.IOException;
 import java.nio.file.Path;
+
+import static org.variantsync.diffdetective.util.fide.FixTrueFalse.Formula.*;
 
 /**
  * DiffDetective Demo for FSE 2024.
@@ -30,23 +35,18 @@ public class Main
      * - and finally show all trees and diffs in a GUI.
      */
     private static void inspect(String fileBefore, String fileAfter) throws IOException, DiffParseException {
-        Path examplesDir = Path.of("data", "examples");
-        Path pathBefore  = examplesDir.resolve(fileBefore);
-        Path pathAfter   = examplesDir.resolve(fileAfter);
+        final Path examplesDir = Path.of("data", "examples");
+        final Path pathBefore  = examplesDir.resolve(fileBefore);
+        final Path pathAfter   = examplesDir.resolve(fileAfter);
         
         String textDiff = JGitDiff.textDiff(pathBefore, pathAfter, DiffAlgorithm.SupportedAlgorithm.MYERS);
         System.out.println(textDiff);
         
-        VariationTree<DiffLinesLabel> s1 = VariationTree.fromFile(
-                pathBefore,
-                VariationDiffParseOptions.Default
-        );
-        VariationTree<DiffLinesLabel> s2 = VariationTree.fromFile(
-                pathAfter,
-                VariationDiffParseOptions.Default
-        );
+        VariationTree<DiffLinesLabel> s1 = VariationTree.fromFile(pathBefore);
+        VariationTree<DiffLinesLabel> s2 = VariationTree.fromFile(pathAfter);
+        
         VariationDiff<DiffLinesLabel> diffViaGumTree = VariationDiff.fromTrees(s1, s2);
-        VariationDiff<DiffLinesLabel> diffViaGit = VariationDiff.fromFiles(pathBefore, pathAfter, DiffAlgorithm.SupportedAlgorithm.MYERS, VariationDiffParseOptions.Default);
+        VariationDiff<DiffLinesLabel> diffViaGit     = VariationDiff.fromFiles(pathBefore, pathAfter, DiffAlgorithm.SupportedAlgorithm.MYERS, VariationDiffParseOptions.Default);
 
         GameEngine.showAndAwaitAll(
                 Show.tree(s1),
@@ -54,12 +54,27 @@ public class Main
                 Show.diff(diffViaGumTree),
                 Show.diff(diffViaGit)
         );
+        
+        // Views: Trace
+        GameEngine.showAndAwaitAll(
+                Show.diff(diffViaGit),
+                Show.diff(DiffView.optimized(diffViaGit, new Trace("B"))) // C
+        );
+        
+        // Views: Partial Configuration
+        GameEngine.showAndAwaitAll(
+                Show.diff(diffViaGit),
+                Show.diff(DiffView.optimized(diffViaGit, new Configure(not(var("A"))))) // C
+        );
     }
     
-    public static void main( String[] args ) throws IOException, DiffParseException {
+    public static void main(String[] args) throws IOException, DiffParseException {
         inspect("simple_v1.txt", "simple_v2.txt");
-        inspect("vim_evalfunc_v1.txt", "vim_evalfunc_v2.txt");
-        
+//        inspect("vim_evalfunc_v1.txt", "vim_evalfunc_v2.txt");
+//        runSomeHistoryAnalysis();
+    }
+    
+    public static void runSomeHistoryAnalysis() throws IOException {
         AnalysisRunner.run(
                 new AnalysisRunner.Options(
                         Path.of("data", "repos"), 
