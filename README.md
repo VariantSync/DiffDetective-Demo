@@ -7,6 +7,10 @@ There is a screencast available on YouTube, guiding you through the demo's setup
 
 [![DiffDetective Demonstration](docs/yt_thumbnail.png)](https://www.youtube.com/watch?v=q6ight5EDQY)
 
+This demo, also manifests the artifact submission for our paper _Variability-Aware Differencing with DiffDetective_, accepted at the FSE'24 demonstrations track.
+A preprint of the paper is available as part of this repository, [here](Variability-Aware%20Differencing%20with%20DiffDetective.pdf).
+Our application for artifact badges can be found in the [STATUS.md](STATUS.md) file.
+
 ## Setup
 
 The demo is a Java Maven project, which includes DiffDetective as a library.
