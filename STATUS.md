@@ -2,7 +2,7 @@
 ## Overview
 The artifact for our paper _Variability Aware Differencing with DiffDetective_ consists of two parts:
 
-1. **DiffDetective-Demo**: The java library
+1. **DiffDetective-Demo**: This repository contains a demonstration of DiffDetective. The idea of this demo is to serve as an example for how to use DiffDetective, as well as a template project to clone and adapt as a quickstart for developing with DiffDetective.
 2. **DiffDetective**: Our Java Maven library that implements variability-aware differencing as well as various analyses. 
     DiffDetective also contains replication packages of previous studies.
     DiffDetective is hosted in its own repository on [Github](https://github.com/VariantSync/DiffDetective)
