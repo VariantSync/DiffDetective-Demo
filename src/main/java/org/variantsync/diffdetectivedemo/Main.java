@@ -16,8 +16,12 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- * DiffDetective Demo for FSE 2024.
- *
+ * Main file of the DiffDetective demo, submitted to FSE 2024.
+ * This demo will show how to
+ * - create variation trees from C code files,
+ * - create variation diffs (i.e., variability-aware differences) via text-based or tree-based differencing,
+ * - inspect variation trees and diffs via a GUI,
+ * - run a small analyses on all commits for a range of input Git repositories.
  */
 public class Main
 {
