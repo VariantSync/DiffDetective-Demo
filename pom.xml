@@ -64,7 +64,7 @@
           <configuration>
               <archive>
                   <manifest>
-                      <mainClass>org.variantsync.diffdetectivedemo.Main.java</mainClass>
+                      <mainClass>org.variantsync.diffdetectivedemo.Main</mainClass>
                   </manifest>
               </archive>
               <descriptorRefs>
