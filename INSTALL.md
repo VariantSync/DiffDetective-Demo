@@ -12,9 +12,21 @@ Follow the setup instructions on the [DiffDetective website](https://variantsync
 These instructions make you clone the repo and install it.
 Afterward, come back here and you should be ready to go.
 
-If you want an empty demo template project to implement the demo yourself, or to use DiffDetective for other purposes, you may
-switch to the `empty` branch.
-The `main` branch contains the full demo source code.
+To run the demo, you can do so via an IDE or terminal.
+In our screencast, we show how to build and run the Demo in IntelliJ.
+Alternatively, here we show how to build and run the demo on the command line.
+
+Open a terminal and navigate to the top level of this repository.
+You can then build the demo running the following Maven command:
+```shell
+mvn package
+```
+Afterward, the jar files can be found in the `target` directory as the build output.
+To run the demo, invoke `java` on the jar file that includes any dependencies:
+```shell
+java -jar target/diffdetectivedemo-1.0.0-jar-with-dependencies.jar
+```
+The expected output and behavior of the jar file is explained below in the section _Expected Output_.
 
 ## Docker Setup
 
