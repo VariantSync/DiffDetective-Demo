@@ -24,7 +24,7 @@ case "$1" in
       docker build . --tag diffdetective-demo:1.0.0 || echo "Failed to build the docker container." && echo "Docker container sucessfully built."
     ;;
   demo)
-    docker run --rm --net=host --volume="$HOME/.Xauthority:/home/user/.Xauthority:rw" -e _JAVA_AWT_WM_NONREPARENTING="$_JAVA_AWT_WM_NONREPARENTING" diffdetective-demo:1.0.0
+    docker run --rm --net=host --volume="$HOME/.Xauthority:/home/user/.Xauthority:rw" -e _JAVA_AWT_WM_NONREPARENTING="$_JAVA_AWT_WM_NONREPARENTING" -e DISPLAY="${DISPLAY:-:0}" diffdetective-demo:1.0.0
     ;;
   *)
     usage
