@@ -3,6 +3,7 @@
 You may run the demo manually, or by using Nix or Docker.
 The manual setup enables you to use DiffDetective in any of your own Maven projects.
 The Nix and Docker setups just build the demo for you to run it.
+Windows users should _not_ use the Nix setup except if they have experience with WSL2, XServers, and Nix (see [REQUIREMENTS.md](REQUIREMENTS.md)).
 
 ## Manual Setup
 
@@ -66,7 +67,13 @@ See [REQUIREMENTS.md](REQUIREMENTS.md) for instructions on how to install Nix an
 
 ### Standalone Build
 
-If you have flake's enabled, you can just use
+> Notice for Windows users:
+> You must run the following commands from within a WSL2 terminal.
+> Also, make sure to clone this repository to a directory within WSL and _not_ to a Windows directory.
+> Otherwise, the Nix setup might fail due to incompatibilities with the file system.
+> Moreover, if you would like to have access to the demo's GUI, you need an XServer installed (see [REQUIREMENTS.md](REQUIREMENTS.md)).
+
+If you have flakes enabled, you can just use
 ```shell
 nix run github:VariantSync/DiffDetective-Demo
 ```
