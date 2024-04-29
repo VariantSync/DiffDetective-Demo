@@ -21,7 +21,7 @@ case "$1" in
     # If Nix is not installed or the build failed due to any reason, try to
     # build with Docker.
     ( which nix &>/dev/null && nix-build nix/docker.nix && docker load < result ) ||
-      docker build . --tag diffdetective-demo:1.0.0 || echo "Failed to build the docker container." && echo "Docker container sucessfully built."
+      docker build . --tag diffdetective-demo:1.0.0 || echo "Failed to build the docker container." && echo "Docker container successfully built."
     ;;
   demo)
     docker run --rm --net=host --volume="$HOME/.Xauthority:/home/user/.Xauthority:rw" -e _JAVA_AWT_WM_NONREPARENTING="$_JAVA_AWT_WM_NONREPARENTING" -e DISPLAY="${DISPLAY:-:0}" diffdetective-demo:1.0.0
