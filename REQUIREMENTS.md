@@ -39,5 +39,8 @@ Head to the [NixOS website](https://nixos.org/download/) and follow the installa
 Follow the download instructions for `Nix: the package manager`, not `NixOS: the Linux distribution`!
 
 Note that Nix is not available for Windows.
-Instead you can use Nix from within Windows Subsystem for Linux (WSL2).
-Alternatively, you may use Docker instead.
+Instead, you can use Nix from within Windows Subsystem for Linux (WSL2).
+However, we do not recommend using Nix on Windows, except if you are already familiar with WSL2, Nix, and XServers.
+We recommend using Docker or a manual setup instead.
+Running the Demo from within WSL2 requires an XServer.
+We recommend [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
