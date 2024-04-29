@@ -8,7 +8,7 @@ The Nix and Docker setups just build the demo for you to run it.
 
 Check the requirements needed for the manual setup in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
 
-Follow the setup instructions on the [DiffDetective website](https://variantsync.github.io/DiffDetective/).
+Follow the setup instructions on the [DiffDetective website](https://variantsync.github.io/DiffDetective/) for building and installing DiffDetective with Maven (and _not_ with Nix).
 These instructions make you clone the repo and install it.
 Afterward, come back here and you should be ready to go.
 
