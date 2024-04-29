@@ -56,7 +56,7 @@ See [REQUIREMENTS.md](REQUIREMENTS.md) for instructions on how to install Nix an
 
 If you have flake's enabled, you can just use
 ```shell
-nix run https://github.com/VariantSync/DiffDetective-Demo.git
+nix run github:VariantSync/DiffDetective-Demo
 ```
 
 Otherwise, clone and navigate to this repository.
