@@ -1,7 +1,7 @@
 # DiffDetective-Demo
 
 A small demonstration of [DiffDetective](https://github.com/VariantSync/DiffDetective).
-The idea of this demo is to serve as an example for how to use DiffDetective, as well as a template project for you to clone and adapt as a quickstart for developing with DiffDetective.
+The purpose of this demo is to provide an example of how to use DiffDetective and to serve as a template project for you to clone and adapt as a quickstart for developing with DiffDetective.
 
 There is a screencast available on YouTube, guiding you through the demo's setup with Maven in IntelliJ and how to implement variability-aware differencing and analyses of Git histories:
 
