@@ -11,7 +11,13 @@ For downloading this demo, we recommend Git (installing Git is explained in [thi
 The setup is tested on Windows 10, WSL2, Manjaro, Ubuntu, NixOS and MacOS Monterey.
 
 ### Toolchain
-This demo is a Maven project based on Java 17. Thus, it requires a [Java development toolkit](https://www.oracle.com/java/technologies/downloads/) of version 17 or higher, and [Maven](https://maven.apache.org/). 
+This demo is a Maven project based on Java 17.
+
+To build the demo, a [Java development toolkit](https://www.oracle.com/java/technologies/downloads/) of version 17 or higher, and [Maven](https://maven.apache.org/) are required.
+
+To run the demo, graphviz should be installed. You may find installation instructions for graphviz [here](https://graphviz.org/download/).
+You may run the demo without graphviz but the demo will print an error to the terminal and DiffDetective cannot compute a layout for visualizing graphs.
+So the GUI may appear differently as in the screencast (see _Expected Output_ section in [INSTALL.md](INSTALL.md)).
 
 ### Java Dependencies
 The demo has few dependencies, most of which will be handled automatically by Maven.
