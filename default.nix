@@ -11,8 +11,8 @@
   DiffDetective =
     import (builtins.fetchGit {
       url = "https://github.com/VariantSync/DiffDetective.git";
-      rev = "4adc0b84a390ea138f48dbb98918b9d2317bb896";
-      ref = "develop";
+      rev = "913e714089496feb627eaed0d47282330d371df1";
+      ref = "main";
       shallow = true;
     }) {
       inherit sources;
@@ -34,7 +34,7 @@ in
         fileset = gitTracked ./.;
       };
 
-    mvnHash = "sha256-dw/CXrUj6AW6yhLsloZX5F9O2edsaj3SaigKTPHidSs=";
+    mvnHash = "sha256-8qh6MaHpmIG+DOX69J2CqzFJ+h0RBdRQKsXVC1MKgS4=";
 
     mvnFetchExtraArgs = {
       preBuild = ''
