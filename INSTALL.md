@@ -42,17 +42,36 @@ Check the requirements needed for the Docker setup in the [REQUIREMENTS.md](REQU
 
 More detailed instructions on starting the deamon are given [here](https://docs.docker.com/config/daemon/start/) on the docker website.
 
-You can use the `docker.sh` script to build and execute the Demo using [Docker](https://www.docker.com/get-started) as described below.
+### Docker Setup on Windows
 
-### Hints for Linux users
-The following hints apply for most Linux users:
+Open a terminal (preferably Windows PowerShell) and navigate to the repository's directory (the directory containing this `INSTALL.md`).
+Then, create the docker image
+```shell
+docker build -t diffdetective-demo .
+```
+You can verify that the image was created successfully by running
+```shell
+docker images
+```
+and checking that an image called `diffdetective-demo` is listed.
+You can run the image and thus the demo with the following command:
+```shell
+docker run --net=host -e DISPLAY=host.docker.internal:0 -t diffdetective-demo
+```
+You may get some font errors, which you can ignore (see Troubleshooting below).
+
+
+### Docker Setup on Linux
+
 > You might require elevated privileges to execute Docker commands (e.g., `sudo ./docker.sh build` or adding the user to the `docker` or `wheel` group).
 > See Docker's [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) for more information.
 
 > It is best to install required software (e.g., Docker, Maven) using your distro's package manager if it is available.
 
-### Setup
-Clone and navigate to this repository.
+You can use the `docker.sh` script to build and execute the Demo using [Docker](https://www.docker.com/get-started) as described below.
+
+#### Setup
+Clone and navigate to this repository (the directory containing this `INSTALL.md`).
 Then, simply build the image using the provided script:
 ```shell
 ./docker.sh build
@@ -60,7 +79,7 @@ Then, simply build the image using the provided script:
 
 This will automatically build the Docker container using Nix if Nix is installed on your system.
 
-### Execution
+#### Execution
 Once the image has been build, you can start the demo with
 ```shell
 ./docker.sh demo
