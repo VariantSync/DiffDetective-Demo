@@ -37,3 +37,7 @@ How to install Docker depends on your operating system:
 How to install Nix, also depends on your operating system.
 Head to the [NixOS website](https://nixos.org/download/) and follow the installation instructions for your system.
 Follow the download instructions for `Nix: the package manager`, not `NixOS: the Linux distribution`!
+
+Note that Nix is not available for Windows.
+Instead you can use Nix from within Windows Subsystem for Linux (WSL2).
+Alternatively, you may use Docker instead.
