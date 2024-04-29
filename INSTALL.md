@@ -30,10 +30,13 @@ The following hints apply for most Linux users:
 > It is best to install required software (e.g., Docker, Maven) using your distro's package manager if it is available.
 
 ### Setup
-Simply build the image using the provided script:
+Clone and navigate to this repository.
+Then, simply build the image using the provided script:
 ```shell
-./docker.sh build 
+./docker.sh build
 ```
+
+This will automatically build the Docker container using Nix if Nix is installed on your system.
 
 ### Execution
 Once the image has been build, you can start the demo with
@@ -42,6 +45,37 @@ Once the image has been build, you can start the demo with
 ```
 
 ## Nix Setup
+
+Nix can be used to reproducibly build both, a standalone derivation and a docker container.
+Nix aids in reproducible builds whereas Docker aids in reproducible execution.
+
+To use Nix, you need to have [Nix](https://nixos.org/download/) installed on your system.
+See [REQUIREMENTS.md](REQUIREMENTS.md) for instructions on how to install Nix and optionally also Docker.
+
+### Standalone Build
+
+If you have flake's enabled, you can just use
+```shell
+nix run https://github.com/VariantSync/DiffDetective-Demo.git#.
+```
+
+Otherwise, clone and navigate to this repository.
+Then simply build and run the Demo using
+```shell
+nix-build
+./result/bin/DiffDetective-Demo
+```
+
+### Using a Docker Image
+
+If you have Nix installed, the `docker.sh` script will automatically build this demo using Nix.
+Hence, the instructions are the same as for docker:
+Clone and navigate to this repository and execute the following:
+```shell
+./docker.sh build
+./docker.sh demo
+```
+
 
 ## Expected Output
 
