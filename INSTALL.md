@@ -170,4 +170,4 @@ For Windows users though, we recommend to use Docker instead of Nix.
 
 ### Docker says my image was built 54 years ago.
 
-That is in purpose. Timestamps are not reproducible so we fixed the timestamp to the UNIX timestamp 1.
+That is in purpose. Timestamps are not reproducible, so we fixed the timestamp to the UNIX timestamp 1.
