@@ -167,3 +167,7 @@ error: 1 dependencies of derivation '/nix/store/3hyzjh1jfjaac2vgi5zj7mhw5cvr0gym
 you probably downloaded the demo to a Windows directory but tried to use the Nix setup from WSL2.
 Please clone the demo to a directory within WSL2.
 For Windows users though, we recommend to use Docker instead of Nix.
+
+### Docker says my image was built 54 years ago.
+
+That is in purpose. Timestamps are not reproducible so we fixed the timestamp to the UNIX timestamp 1.
