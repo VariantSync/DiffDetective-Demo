@@ -4,14 +4,14 @@ None
 
 ## Software Requirements
 
-> This demo can be run with Docker or Nix. If you intend to use one of them, you may skip to the last section in this README. 
+> This demo can be run with Docker or Nix. If you intend to use one of them, you may skip to the last section in this document. 
 
 We do not require a certain operating system or prepared environment.
 For downloading this demo, we recommend Git (installing Git is explained in [this article](https://github.com/git-guides/install-git)).
 The setup is tested on Windows 10, WSL2, Manjaro, Ubuntu, and MacOS Monterey.
 
 ### Toolchain
-This demo is a Maven project based on Java 17. Thus, it requires a [Java development toolik](https://www.oracle.com/java/technologies/downloads/) of version 17 or higher, and [Maven](https://maven.apache.org/). 
+This demo is a Maven project based on Java 17. Thus, it requires a [Java development toolkit](https://www.oracle.com/java/technologies/downloads/) of version 17 or higher, and [Maven](https://maven.apache.org/). 
 
 ### Java Dependencies
 The demo has few dependencies, most of which will be handled automatically by Maven.
