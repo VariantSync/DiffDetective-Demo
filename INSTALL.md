@@ -201,3 +201,7 @@ This error is raised by Nix when there is no hardware support for virtualization
 In this case, our build script falls back to Docker.
 It is likely that this fall back failed, which typically happens when Docker could not be started.
 To fix, start the docker daemon as it was probably not running.
+
+### Gtk-Message: 00:08:30.171: Failed to load module "colorreload-gtk-module"
+
+This error can be savely ignore. The `colorreload-gtk-module` is used for theming and, hence, is not useful in this scenario.
