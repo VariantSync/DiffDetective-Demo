@@ -171,3 +171,7 @@ For Windows users though, we recommend to use Docker instead of Nix.
 ### Docker says my image was built 54 years ago.
 
 That is in purpose. Timestamps are not reproducible, so we fixed the timestamp to the UNIX timestamp 1.
+
+### Fontconfig error: Cannot load default config file: No such file: (null)
+
+This is a warning that you may ignore. It means that some fonts requested by the GUI could not be found on your system. As long as you see text in your GUI, this is fine.
