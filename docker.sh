@@ -26,7 +26,7 @@ case "$1" in
     ) && echo "Docker container successfully built." || echo "Failed to build the docker container."
     ;;
   demo)
-    docker run --rm --net=host --volume="$HOME/.Xauthority:/home/user/.Xauthority:rw" -e _JAVA_AWT_WM_NONREPARENTING="$_JAVA_AWT_WM_NONREPARENTING" -e DISPLAY="${DISPLAY:-:0}" diffdetective-demo:1.0.0
+    docker run --rm --net=host --volume="$HOME/.Xauthority:/home/user/.Xauthority:rw" -e _JAVA_AWT_WM_NONREPARENTING="$_JAVA_AWT_WM_NONREPARENTING" -e DISPLAY="${DISPLAY:-:0}" --volume="$PWD/data/output:/home/user/data/output:rw" diffdetective-demo:1.0.0
     ;;
   *)
     usage
