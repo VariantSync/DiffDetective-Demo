@@ -167,7 +167,7 @@ The output files of the analysis should be located at [data/output](data/output)
 
 ### ERROR [VariationDiffApp.layoutNodes] java.io.IOException: Cannot run program "dot": error=2, No such file or directory
 
-You may ignore this error. This happens when `dot` is not installed on your system. This program is shipped with graphviz. To fix, please install `graphviz` (see [REQUIREMENTS.md](REQUIREMENTS.md)).
+You may choose to ignore this error. This happens when `dot` is not installed on your system. `dot` is shipped with graphviz. To fix, please install `graphviz` (see [REQUIREMENTS.md](REQUIREMENTS.md)). The demo can run without `graphviz` though (but then all graph nodes in the GUI are located at the same point).
 
 ### Expected Output: There is only a single node in the shown graphs / All nodes are at the same location.
 
