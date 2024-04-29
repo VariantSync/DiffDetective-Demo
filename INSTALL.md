@@ -35,6 +35,13 @@ The expected output and behavior of the jar file is explained below in the secti
 
 Check the requirements needed for the Docker setup in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
 
+### Start the docker deamon
+
+- **On Linux**: Typically, the docker deamon runs automatically, so there is nothing to do. Otherwise, run `sudo systemctl start docker`.
+- **On Windows**: Open the search bar using the 'Windows Key' and search for 'Docker' or 'Docker Desktop'.
+
+More detailed instructions on starting the deamon are given [here](https://docs.docker.com/config/daemon/start/) on the docker website.
+
 You can use the `docker.sh` script to build and execute the Demo using [Docker](https://www.docker.com/get-started) as described below.
 
 ### Hints for Linux users
