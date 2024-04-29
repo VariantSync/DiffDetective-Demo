@@ -59,7 +59,7 @@ You can run the image and thus the demo with the following command:
 docker run --net=host -e DISPLAY=host.docker.internal:0 -t diffdetective-demo
 ```
 You may get some font errors, which you can ignore (see Troubleshooting below).
-
+The parameters `--net=host` and `-e DISPLAY=host.docker.internal:0` are required to launch graphical user interfaces from within Docker.
 
 ### Docker Setup on Linux
 
