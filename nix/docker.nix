@@ -16,23 +16,12 @@ in {
 
     copyToRoot = pkgs.buildEnv {
       name = "DiffDetective-Demo-image-root";
-      paths = [ (DiffDetectiveDemo.src + "/data") ];
+      paths = [(DiffDetectiveDemo.src + "/data")];
       extraPrefix = config.WorkingDir + "/data";
     };
 
     runAsRoot = ''
-      mkdir -p /etc/fonts
-
-      cat >/etc/fonts/fonts.conf <<"EOF"
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-      <fontconfig>
-        <description>Configuration file</description>
-        <dir>${pkgs.dejavu_fonts}/share/fonts</dir>
-        <cachedir>/var/cache/fontconfig</cachedir>
-      </fontconfig>
-      EOF
-
+      install -Dm644 ${import ./fontconfig.nix {inherit sources system pkgs;}} /etc/fonts/fonts.conf
       mkdir -p /var/cache/fontconfig
       ${pkgs.fontconfig}/bin/fc-cache
     '';

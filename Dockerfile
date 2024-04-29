@@ -19,11 +19,15 @@ RUN nix-shell -p dos2unix --run 'find . -exec dos2unix {} +'
 # itselves) using the default nix binary cache.
 RUN nix-build
 
+# Build required fonts and their cache.
+RUN mkdir -p /etc/fonts && nix-build nix/fontconfig.nix --out-link /etc/fonts/fonts.conf
+RUN mkdir -p /var/cache/fontconfig && nix-shell -p fontconfig --run fc-cache
+
 # Copy DiffDetective with all runtime dependencies (ignoring build-time
 # dependencies) to a separate folder. Such a subset of the Nix store is called a
 # closure and enables us to create a minimal Docker container.
 RUN mkdir closure
-RUN nix-store -qR result | xargs cp -Rt closure
+RUN nix-store -qR result /etc/fonts/fonts.conf | xargs cp -Rt closure
 
 # Start building the final container.
 FROM scratch
@@ -39,6 +43,10 @@ COPY --from=builder /home/user/result /DiffDetective
 
 # Copy the necessary data. Beware that this directory might have impure files.
 COPY data /home/user/data
+
+# Install fonts
+COPY --from=builder /etc/fonts/fonts.conf /etc/fonts/fonts.conf
+COPY --from=builder /var/cache/fontconfig /var/cache/fontconfig
 
 ENV DISPLAY=:0 HOME=/home/user
 CMD ["/DiffDetective/bin/DiffDetective-Demo"]
