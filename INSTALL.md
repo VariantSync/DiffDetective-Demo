@@ -5,6 +5,8 @@ The manual setup enables you to use DiffDetective in any of your own Maven proje
 The Nix and Docker setups just build the demo for you to run it.
 Windows users should _not_ use the Nix setup except if they have experience with WSL2, XServers, and Nix (see [REQUIREMENTS.md](REQUIREMENTS.md)).
 
+In case you encounter problems, you may have a look at the _Troubleshooting_ section at the bottom of this file.
+
 ## Manual Setup
 
 Check the requirements needed for the manual setup in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
@@ -134,3 +136,27 @@ The analysis should take about 30s-5min, and its output to terminal should look 
 2024-04-27 11:41:40 INFO    [AnalysisRunner.run] Done
 ```
 The output files of the analysis should be located at [data/output](data/output).
+
+## Troubleshooting
+
+### ERROR [VariationDiffApp.layoutNodes] java.io.IOException: Cannot run program "dot": error=2, No such file or directory
+
+You may ignore this error. This happens when `dot` is not installed on your system. This program is shipped with graphviz. To fix, please install `graphviz` (see [REQUIREMENTS.md](REQUIREMENTS.md)).
+
+### Expected Output: There is only a single node in the shown graphs / All nodes are at the same location.
+
+When graphviz is not installed, DiffDetective cannot compute a layout for the graph nodes in the GUI. To fix, please install `graphviz` (see [REQUIREMENTS.md](REQUIREMENTS.md)).
+
+### Error during `nix-build` on Windows (11)
+
+When you encounter the following error:
+```
+Running phase: buildPhase
+/nix/store/kv5wkk7xgc8paw9azshzlmxraffqcg0i-stdenv-linux/setup: line 114: $'\r': command not found
+/nix/store/kv5wkk7xgc8paw9azshzlmxraffqcg0i-stdenv-linux/setup: line 131: pop_var_context: head of shell_variables not a function context
+error: builder for '/nix/store/y5qjl7ly9zmmkyp6gi2cpzszn84q8a3a-DiffDetective-Demo-1.0.0-maven-deps.drv' failed with exit code 127
+error: 1 dependencies of derivation '/nix/store/3hyzjh1jfjaac2vgi5zj7mhw5cvr0gym-DiffDetective-Demo-1.0.0.drv' failed to build
+```
+you probably downloaded the demo to a Windows directory but tried to use the Nix setup from WSL2.
+Please clone the demo to a directory within WSL2.
+For Windows users though, we recommend to use Docker instead of Nix.
