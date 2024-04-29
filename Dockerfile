@@ -12,6 +12,8 @@ WORKDIR /home/user
 # even if they are modified.
 COPY . .
 
+RUN nix-shell -p dos2unix --run 'find . -exec dos2unix {} +'
+
 # Build the DiffDetective demo. This also all dependencies (e.g., DiffDetective
 # itselves) using the default nix binary cache.
 RUN nix-build
