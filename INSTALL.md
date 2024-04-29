@@ -194,3 +194,10 @@ That is in purpose. Timestamps are not reproducible, so we fixed the timestamp t
 ### Fontconfig error: Cannot load default config file: No such file: (null)
 
 This is a warning that you may ignore. It means that some fonts requested by the GUI could not be found on your system. As long as you see text in your GUI, this is fine.
+
+### error: a 'x86_64-linux' with features {kvm} is required to build '/nix/store/sw5bbvy20jy61r6jh39l6qxvn9jv1mx0-docker-layer-DiffDetective-Demo.drv', but I am a 'x86_64-linux' with features {benchmark, big-parallel, nixos-test, uid-range}
+
+This error is raised by Nix when there is no hardware support for virtualization.
+In this case, our build script falls back to Docker.
+It is likely that this fall back failed, which typically happens when Docker could not be started.
+To fix, start the docker daemon as it was probably not running.
