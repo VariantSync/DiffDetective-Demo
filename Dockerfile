@@ -12,6 +12,7 @@ WORKDIR /home/user
 # even if they are modified.
 COPY . .
 
+# Patch Windows line endings if the repository was cloned on Windows.
 RUN nix-shell -p dos2unix --run 'find . -exec dos2unix {} +'
 
 # Build the DiffDetective demo. This also all dependencies (e.g., DiffDetective
