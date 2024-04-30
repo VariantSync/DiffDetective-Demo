@@ -70,7 +70,7 @@ and checking that an image called `diffdetective-demo` is listed.
 
 To extract the built jar you can run
 ```shell
-docker run --volume "$PWD:/output:rw" diffdetective-demo:1.0.0 /bin/cp /DiffDetective/share/java/DiffDetective-Demo.jar /output
+docker run --volume "${pwd}:/output:rw" diffdetective-demo:1.0.0 /bin/cp /DiffDetective/share/java/DiffDetective-Demo.jar /output
 ```
 and execute it using
 ````shell
@@ -91,7 +91,7 @@ You can use the `build-jar.sh` script to build the Demo jar using [Nix](https://
 The `build-jar.sh` script will automatically choose the build method depending on the available software (Nix or Docker, in that order).
 You might require elevated privileges to execute Docker commands (e.g., `sudo ./build-jar.sh` or adding the user to the `docker` or `wheel` group).
 See Docker's [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) for more information.
-Also, it is best to install required software (e.g., Nix, Docker, Maven) using your distro's package manager if it is available.
+Also, it is best to install required software (e.g., Nix, Docker) using your distro's package manager if it is available.
 
 Clone and navigate to this repository (the directory containing this `INSTALL.md`).
 Then, simply build the jar using the provided script:
@@ -115,7 +115,7 @@ java -jar DiffDetective-Demo.jar
 
 ### Nix Build
 
-Nix can be used to reproducibly this DiffDetective demo.
+Nix can be used to reproducibly build this DiffDetective demo.
 To use Nix, you need to have [Nix](https://nixos.org/download/) installed on your system.
 See [REQUIREMENTS.md](REQUIREMENTS.md) for instructions on how to install Nix.
 
