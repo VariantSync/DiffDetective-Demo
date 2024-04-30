@@ -6,7 +6,7 @@ You may build and run the demo _either_ manually _or_ by using Docker _or_ Nix.
 We hence recommend the manual setup because it enables you to use DiffDetective in any of your own Maven projects.**
 
 The Nix and Docker setups build the demo to a runnable jar file.
-We also provide scripts for running the Demo from within Nix and Docker but we do not recommend using them because the demo launches a graphical user interface which frequently causes problems when run from within Nix or Docker (see Troubleshooting section at the bottom of this file).
+We also provide scripts for running the Demo using Nix dependencies and inside Docker but we do not recommend the complete Docker setup because the demo launches a graphical user interface which frequently causes problems when inside of Docker (see Troubleshooting section at the bottom of this file).
 We hence recommend (1) to build either manually or with Nix or with Docker and (2) to run the produced jar file manually.
 (Windows users should _not_ use the Nix setup except if they are experts on WSL2, XServers, and Nix (see [REQUIREMENTS.md](REQUIREMENTS.md)).)
 
@@ -15,7 +15,7 @@ Once you decided for a setup (Manual/Docker/Nix), check the requirements needed 
 >In case you encounter problems during the setup, you may have a look at the _Troubleshooting_ section at the bottom of this file.
 
 
-## Manual Setup
+## Manual Build
 
 Follow the setup instructions on the [DiffDetective website](https://variantsync.github.io/DiffDetective/) for building and installing DiffDetective with Maven (and _not_ with Nix).
 These instructions make you clone the repo and install it.
@@ -38,18 +38,24 @@ java -jar target/diffdetectivedemo-1.0.0-jar-with-dependencies.jar
 The expected output and behavior of the jar file is explained below in the section _Expected Output_.
 Make sure that you are at the top level of this repository in the terminal (i.e, the directory containing this INSTALL.md file).
 
-## Docker Setup
+## Automatic Build
 
+We provide two methods for automatically building this demo:
+- a [Docker](https://www.docker.com/get-started) build, and
+- a [Nix](https://nixos.org/download/) build.
+
+### Starting the docker deamon
+
+If you want to use Docker to build the jar for you, Docker needs to be installed and running.
 Check the requirements needed for the Docker setup in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
-
-### Start the docker deamon
+You may also need to start the Docker daemon before any Docker commands can be run.
 
 - **On Linux**: Typically, the docker deamon runs automatically, so there is nothing to do. Otherwise, run `sudo systemctl start docker`.
 - **On Windows**: Open the search bar using the 'Windows Key' and search for 'Docker' or 'Docker Desktop'.
 
 More detailed instructions on starting the deamon are given [here](https://docs.docker.com/config/daemon/start/) on the docker website.
 
-### Docker Setup on Windows
+### Docker Build on Windows
 
 Open a terminal (preferably Windows PowerShell) and navigate to the repository's directory (the directory containing this `INSTALL.md`).
 Then, create the docker image
@@ -62,9 +68,13 @@ docker images
 ```
 and checking that an image called `diffdetective-demo` is listed.
 
-**TODO: HOW TO PRODUCE THE JAR FILE HERE?**
+To extract the built jar you can run
+```shell
+docker run --volume "$PWD:/output:rw" diffdetective-demo:1.0.0 /bin/cp /DiffDetective/share/java/DiffDetective-Demo.jar /output
+```
+and execute it using
 ````shell
-java -jar PATH/TO/JAR
+java -jar DiffDetective-Demo.jar
 ````
 
 > **Experimental:**
@@ -75,47 +85,44 @@ java -jar PATH/TO/JAR
 > You may get some font errors, which you can ignore (see Troubleshooting below). 
 > The parameters `--net=host` and `-e DISPLAY=host.docker.internal:0` are required to launch graphical user interfaces from within Docker.
 
-### Docker Setup on Linux
+### Nix or Docker Build on Linux
 
-You can use the `docker.sh` script to build and execute the Demo using [Docker](https://www.docker.com/get-started) as described below.
-You might require elevated privileges to execute Docker commands (e.g., `sudo ./docker.sh build` or adding the user to the `docker` or `wheel` group).
+You can use the `build-jar.sh` script to build the Demo jar using [Nix](https://nixos.org/download/) or [Docker](https://www.docker.com/get-started).
+The `build-jar.sh` script will automatically choose the build method depending on the available software (Nix or Docker, in that order).
+You might require elevated privileges to execute Docker commands (e.g., `sudo ./build-jar.sh` or adding the user to the `docker` or `wheel` group).
 See Docker's [post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) for more information.
-Also, it is best to install required software (e.g., Docker, Maven) using your distro's package manager if it is available.
+Also, it is best to install required software (e.g., Nix, Docker, Maven) using your distro's package manager if it is available.
 
 Clone and navigate to this repository (the directory containing this `INSTALL.md`).
-Then, simply build the image using the provided script:
+Then, simply build the jar using the provided script:
 ```shell
-./docker.sh build
+./build-jar.sh
 ```
 
-This will automatically build the Docker container using Nix if Nix is installed on your system.
-
-**TODO: HOW TO PRODUCE THE JAR FILE HERE?**
+The jar can then be executed with
 ````shell
-java -jar PATH/TO/JAR
+java -jar DiffDetective-Demo.jar
 ````
 
+### Complete Docker Setup on Linux
+
 > **Experimental:**
-> Alternatively, once the image has been build, you can start the demo with
+> You can build and start a demo Docker container with
 > ```shell
+> ./docker.sh build
 > ./docker.sh demo
 > ```
 
-## Nix Setup
+### Nix Build
 
-Nix can be used to reproducibly build both, a standalone derivation and a docker container.
-Nix aids in reproducible builds whereas Docker aids in reproducible execution.
-
+Nix can be used to reproducibly this DiffDetective demo.
 To use Nix, you need to have [Nix](https://nixos.org/download/) installed on your system.
-See [REQUIREMENTS.md](REQUIREMENTS.md) for instructions on how to install Nix and optionally also Docker.
-
-### Standalone Build
+See [REQUIREMENTS.md](REQUIREMENTS.md) for instructions on how to install Nix.
 
 > Notice for Windows users:
 > You must run the following commands from within a WSL2 terminal.
 > Also, make sure to clone this repository to a directory within WSL and _not_ to a Windows directory.
 > Otherwise, the Nix setup might fail due to incompatibilities with the file system.
-> Moreover, if you would like to have access to the demo's GUI, you need an XServer installed (see [REQUIREMENTS.md](REQUIREMENTS.md)).
 
 > Notice for Nix flake users:
 > If you have flakes enabled, you can just use `nix run github:VariantSync/DiffDetective-Demo` to run the demo instead of the following instructions.
@@ -131,7 +138,7 @@ You can run it manually with Java (requires Java 17 or higher):
 ```shell
 java -jar result/share/java/DiffDetective-Demo.jar
 ```
-or alternatively via nix:
+or alternatively with the provided wrapper script:
 ```shell
 ./result/bin/DiffDetective-Demo
 ```
