@@ -209,3 +209,9 @@ This error can be savely ignore. The `colorreload-gtk-module` is used for themin
 ### error: experimental Nix feature 'nix-command' is disabled; add '--extra-experimental-features nix-command' to enable it
 
 You ran Nix flakes without having enabled it. Either enable it by adding the extra parameters to the call as indicated in the error message, or stick to the non-experimental nix commands as described above (recommended).
+
+### Exception in thread "main" java.nio.file.NoSuchFileException: data/examples/simple_v1.txt
+
+The demo could not find one of this input files.
+This likely happened because you ran the demo from a working directory that is not the top level of this repository in the terminal (i.e, the directory containing this INSTALL.md file).
+To fix, navigate to the root directory of this repository in your terminal and run the demo again.
