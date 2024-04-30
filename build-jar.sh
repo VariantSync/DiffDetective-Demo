@@ -8,6 +8,7 @@ then
   nix-build &&
   cp -f result/share/java/DiffDetective-Demo.jar . &&
   chmod u+w DiffDetective-Demo.jar &&
+  echo &&
   echo "The jar has been built successfully. You can find it in $(realpath DiffDetective-Demo.jar)" &&
   echo "You might want to remove the 'result' link ('rm result') to allow the Nix garbage collector to reclaim some space."
 elif command -v docker &>/dev/null
