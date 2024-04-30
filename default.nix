@@ -66,7 +66,7 @@ in
     postInstall = ''
       local jar="$out/share/java/DiffDetective-Demo.jar"
       install -Dm644 "target/diffdetectivedemo-${version}-jar-with-dependencies.jar" "$jar"
-      makeWrapper "${DiffDetective.jre-minimal}/bin/java" "$out/bin/DiffDetective-Demo" \
+      makeWrapper "${pkgs.jre}/bin/java" "$out/bin/DiffDetective-Demo" \
         --add-flags "-cp '$jar' org.variantsync.diffdetectivedemo.Main" \
         --prefix PATH : "${pkgs.graphviz}/bin"
     '';
