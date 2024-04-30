@@ -6,7 +6,8 @@ if command -v nix-build &>/dev/null
 then
   echo "Using Nix to build the DiffDetective demo jar."
   nix-build &&
-  cp result/share/java/DiffDetective-Demo.jar . &&
+  cp -f result/share/java/DiffDetective-Demo.jar . &&
+  chmod u+w DiffDetective-Demo.jar &&
   echo "The jar has been built successfully. You can find it in $(realpath DiffDetective-Demo.jar)" &&
   echo "You might want to remove the 'result' link ('rm result') to allow the Nix garbage collector to reclaim some space."
 elif command -v docker &>/dev/null
@@ -31,7 +32,7 @@ then
   fi
 
   docker build . --tag diffdetective-demo:1.0.0 &&
-  docker run --volume "$(realpath .):/output:rw" diffdetective-demo:1.0.0 /bin/cp /DiffDetective/share/java/DiffDetective-Demo.jar /output
+  docker run --volume "$PWD:/output:rw" diffdetective-demo:1.0.0 /bin/cp /DiffDetective/share/java/DiffDetective-Demo.jar /output
 
   if [ "$?" -eq 0 ]
   then
