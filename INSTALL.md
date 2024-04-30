@@ -205,3 +205,7 @@ To fix, start the docker daemon as it was probably not running.
 ### Gtk-Message: 00:08:30.171: Failed to load module "colorreload-gtk-module"
 
 This error can be savely ignore. The `colorreload-gtk-module` is used for theming and, hence, is not useful in this scenario.
+
+### error: experimental Nix feature 'nix-command' is disabled; add '--extra-experimental-features nix-command' to enable it
+
+You ran Nix flakes without having enabled it. Either enable it by adding the extra parameters to the call as indicated in the error message, or stick to the non-experimental nix commands as described above (recommended).
