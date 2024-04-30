@@ -1,5 +1,6 @@
 # DiffDetective-Demo
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11095172.svg)](https://doi.org/10.5281/zenodo.11095172)
+[![License](https://img.shields.io/badge/License-GNU%20LGPLv3-blue)](LICENSE.LGPL3)
 
 This is a small demonstration of [DiffDetective](https://github.com/VariantSync/DiffDetective).
 The purpose of this demo is to provide an example of how to use DiffDetective and to serve as a template project for you to clone and adapt as a quickstart for developing with DiffDetective.
