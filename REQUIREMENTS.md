@@ -58,3 +58,7 @@ As an _optional_ dependency, running the demo uses graphviz.
 You may find installation instructions for graphviz [here](https://graphviz.org/download/).
 You may run the demo without graphviz, in which case the demo will print an error to the terminal and DiffDetective cannot compute a layout for visualizing graphs.
 In this case, the GUI may appear differently as in the screencast (see _Expected Output_ section in [INSTALL.md](INSTALL.md)).
+
+> We also provide a nix and docker setup for running the demo, too. However, these setups are fragile because the demo launches a graphical user interface which may cause errors.
+> Hence, you can also run the demo without installing Java or graphviz.
+> We hence recommend to run the demo manually with Java.
