@@ -23,11 +23,14 @@ RUN nix-build
 RUN mkdir -p /etc/fonts && nix-build nix/fontconfig.nix --out-link /etc/fonts/fonts.conf
 RUN mkdir -p /var/cache/fontconfig && nix-shell -p fontconfig --run fc-cache
 
+# We need `cp` to copy out the jar.
+RUN nix-build '<nixpkgs>' -A coreutils -o coreutils
+
 # Copy DiffDetective with all runtime dependencies (ignoring build-time
 # dependencies) to a separate folder. Such a subset of the Nix store is called a
 # closure and enables us to create a minimal Docker container.
 RUN mkdir closure
-RUN nix-store -qR result /etc/fonts/fonts.conf | xargs cp -Rt closure
+RUN nix-store -qR result /etc/fonts/fonts.conf coreutils | xargs cp -Rt closure
 
 # Start building the final container.
 FROM scratch
@@ -47,6 +50,9 @@ COPY data /home/user/data
 # Install fonts
 COPY --from=builder /etc/fonts/fonts.conf /etc/fonts/fonts.conf
 COPY --from=builder /var/cache/fontconfig /var/cache/fontconfig
+
+# Install `cp`
+COPY --from=builder /home/user/coreutils/bin/cp /bin/cp
 
 ENV DISPLAY=:0 HOME=/home/user
 CMD ["/DiffDetective/bin/DiffDetective-Demo"]
