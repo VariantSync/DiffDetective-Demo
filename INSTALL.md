@@ -101,16 +101,16 @@ See [REQUIREMENTS.md](REQUIREMENTS.md) for instructions on how to install Nix an
 > Otherwise, the Nix setup might fail due to incompatibilities with the file system.
 > Moreover, if you would like to have access to the demo's GUI, you need an XServer installed (see [REQUIREMENTS.md](REQUIREMENTS.md)).
 
-If you have flakes enabled, you can just use
-```shell
-nix run github:VariantSync/DiffDetective-Demo
-```
-
-Otherwise, clone and navigate to this repository.
+Clone and navigate to this repository.
 Then simply build and run the Demo using
 ```shell
 nix-build
 ./result/bin/DiffDetective-Demo
+```
+
+If you have flakes enabled, you can instead just use
+```shell
+nix run github:VariantSync/DiffDetective-Demo
 ```
 
 ### Using a Docker Image
