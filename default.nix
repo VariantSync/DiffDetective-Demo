@@ -19,8 +19,7 @@
       inherit system;
       buildGitHubPages = false;
     };
-in
-  pkgs.maven.buildMavenPackage rec {
+  demo = pkgs.maven.buildMavenPackage rec {
     pname = "DiffDetective-Demo";
     # The single source of truth for the version number is stored in `pom.xml`.
     # Hence, this XML file needs to be parsed to extract the current version.
@@ -61,6 +60,17 @@ in
       '';
     };
 
+    passthru = {
+      data-wrapper = pkgs.writeShellScriptBin "DiffDetective-Demo" ''
+        if ! [ -d data ]
+        then
+          cp -r ${src}/data .
+          chmod u+w -R data
+        fi
+        ${demo}/bin/DiffDetective-Demo
+      '';
+    };
+
     nativeBuildInputs = [pkgs.makeWrapper];
 
     postInstall = ''
@@ -72,4 +82,6 @@ in
     '';
 
     meta.mainProgram = "DiffDetective-Demo";
-  }
+  };
+in
+  demo
