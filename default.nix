@@ -34,7 +34,7 @@ in
         fileset = gitTracked ./.;
       };
 
-    mvnHash = "sha256-8qh6MaHpmIG+DOX69J2CqzFJ+h0RBdRQKsXVC1MKgS4=";
+    mvnHash = "sha256-gIa1hQm6KCjZUKRQO9pYmqMmDZEmuhkUwvq62MxCGMU=";
 
     mvnFetchExtraArgs = {
       preBuild = ''
