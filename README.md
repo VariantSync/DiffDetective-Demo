@@ -10,8 +10,8 @@ There is a screencast available on YouTube, guiding you through the demo's setup
 This demo, also manifests the artifact submission for our paper _Variability-Aware Differencing with DiffDetective_, accepted at the FSE'24 demonstrations track.
 A preprint of the paper is available as part of this repository, [here](Variability-Aware%20Differencing%20with%20DiffDetective.pdf).
 Our application for artifact badges can be found in the [STATUS.md](STATUS.md) file.
-Please not that this submission is _not_ a replication package of an empirical study (e.g., tool evaluation).
-Instead, this repository is a template project with examples for how to use DiffDetective (i.e., a demo).
+Please note that this submission is _not_ a replication package of an empirical study (e.g., tool evaluation).
+Instead, this repository is a template project with examples for how to use DiffDetective as a library (i.e., a demo).
 
 ## Setup
 

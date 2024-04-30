@@ -7,7 +7,7 @@ We hence recommend the manual setup because it enables you to use DiffDetective 
 
 The Nix and Docker setups build the demo to a runnable jar file.
 We also provide scripts for running the Demo from within Nix and Docker but we do not recommend using them because the demo launches a graphical user interface which frequently causes problems when run from within Nix or Docker (see Troubleshooting section at the bottom of this file).
-We hence recommend to (1) build either manually or with Nix or with Docker and (2) run the produced jar file manually.
+We hence recommend (1) to build either manually or with Nix or with Docker and (2) to run the produced jar file manually.
 (Windows users should _not_ use the Nix setup except if they are experts on WSL2, XServers, and Nix (see [REQUIREMENTS.md](REQUIREMENTS.md)).)
 
 Once you decided for a setup (Manual/Docker/Nix), check the requirements needed for the respective setup in the [REQUIREMENTS.md](REQUIREMENTS.md) file.
