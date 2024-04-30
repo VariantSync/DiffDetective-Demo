@@ -4,33 +4,32 @@ None
 
 ## Software Requirements
 
-> This demo can be run with Docker or Nix. If you intend to use one of them, you may skip to the last section in this document. 
-
 We do not require a certain operating system or prepared environment.
 For downloading this demo, we recommend Git (installing Git is explained in [this article](https://github.com/git-guides/install-git)).
-The setup is tested on Windows 10, WSL2, Manjaro, Ubuntu, NixOS and MacOS Monterey.
+The setup is tested on Windows 10, WSL2, Manjaro, and NixOS.
 
-### Toolchain
+**Executing the demo consists of two steps**: _building the project_ and _running the demo_.
+Each step has its own software requirements.
+
+
+### Requirements for Building
+
+This demo can be built _either_ manually _or_ using Docker _or_ using Nix.
+You may choose one of these setups.
+If you intend to use this project to develop your own library or application based on DiffDetective, we recommend the manual build.
+
+#### Requirements for Building Manually
+
 This demo is a Maven project based on Java 17.
 
 To build the demo, a [Java development toolkit](https://www.oracle.com/java/technologies/downloads/) of version 17 or higher, and [Maven](https://maven.apache.org/) are required.
 
-To run the demo, graphviz should be installed. You may find installation instructions for graphviz [here](https://graphviz.org/download/).
-You may run the demo without graphviz but the demo will print an error to the terminal and DiffDetective cannot compute a layout for visualizing graphs.
-So the GUI may appear differently as in the screencast (see _Expected Output_ section in [INSTALL.md](INSTALL.md)).
-
-### Java Dependencies
 The demo has few dependencies, most of which will be handled automatically by Maven.
 The dependencies are documented in the Maven build file ([pom.xml](pom.xml)).
 The only dependency that must be installed manually is our tool and library DiffDetective, which is also a Java Maven project.
 Installing DiffDetective follows the default maven workflow and is explained on the [DiffDetective website](https://variantsync.github.io/DiffDetective/) and README.
 
-## Virtualization: Docker or Nix
-For easy replication, this demo also comes with a Nix package and a Docker container, which can be used on any system supporting Nix or Docker, respectively.
-The Nix and Docker setup will take care of all requirements and dependencies (including DiffDetective) and will build the demo to a single runnable JAR file.
-_Note_: Nix and Docker are neither required by the demo nor DiffDetective! They only serve to ease the setup for you.
-
-### Docker
+#### Requirements for Building with Docker
 
 How to install Docker depends on your operating system:
 
@@ -38,7 +37,7 @@ How to install Docker depends on your operating system:
 - _Linux Distributions_: How to install Docker on your system, depends on your distribution. The chances are high that Docker is part of your distributions package database.
   Docker's [documentation](https://docs.docker.com/engine/install/) contains instructions for common distributions.
 
-### Nix
+#### Requirements for Building with Nix
 
 How to install Nix, also depends on your operating system.
 Head to the [NixOS website](https://nixos.org/download/) and follow the installation instructions for your system.
@@ -50,3 +49,12 @@ However, we do not recommend using Nix on Windows, except if you are already fam
 We recommend using Docker or a manual setup instead.
 Running the Demo from within WSL2 requires an XServer.
 We recommend [VcXsrv](https://sourceforge.net/projects/vcxsrv/).
+
+### Requirements for Running
+
+To run the demo, a [Java development toolkit](https://www.oracle.com/java/technologies/downloads/) of version 17 or higher is required.
+
+As an _optional_ dependency, running the demo uses graphviz.
+You may find installation instructions for graphviz [here](https://graphviz.org/download/).
+You may run the demo without graphviz, in which case the demo will print an error to the terminal and DiffDetective cannot compute a layout for visualizing graphs.
+In this case, the GUI may appear differently as in the screencast (see _Expected Output_ section in [INSTALL.md](INSTALL.md)).
