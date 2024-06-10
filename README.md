@@ -1,6 +1,9 @@
 # DiffDetective-Demo
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11095172.svg)](https://doi.org/10.5281/zenodo.11095172)
 [![License](https://img.shields.io/badge/License-GNU%20LGPLv3-blue)](LICENSE.LGPL3)
+[![Preprint](https://img.shields.io/badge/Preprint-Read-purple)][Preprint]
+
+<img padding="10" align="right" src="https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_evaluated_reusable_v1_1.png" alt="ACM Artifacts Evaluated Reusable" width="114" height="113"/>
 
 This is a small demonstration of [DiffDetective](https://github.com/VariantSync/DiffDetective).
 The purpose of this demo is to provide an example of how to use DiffDetective and to serve as a template project for you to clone and adapt as a quickstart for developing with DiffDetective.
@@ -9,11 +12,9 @@ There is a screencast available on YouTube, guiding you through the demo's setup
 
 [![DiffDetective Demonstration](docs/yt_thumbnail.png)](https://www.youtube.com/watch?v=q6ight5EDQY)
 
-This demo, also manifests the artifact submission for our paper _Variability-Aware Differencing with DiffDetective_, accepted at the FSE'24 demonstrations track.
-A preprint of the paper is available as part of this repository, [here](Variability-Aware%20Differencing%20with%20DiffDetective.pdf).
-Our application for artifact badges can be found in the [STATUS.md](STATUS.md) file.
-Please note that this submission is _not_ a replication package of an empirical study (e.g., tool evaluation).
-Instead, this repository is a template project with examples for how to use DiffDetective as a library (i.e., a demo).
+To learn more about DiffDetective you may either head to it's [website][DiffDetectiveWebsite] or read our accompanying paper (a preprint is available [here][Preprint]):
+
+> P. M. Bittner, A. Schultheiß, B. Moosherr, T. Kehrer, T. Thüm. _Variability-Aware Differencing with DiffDetective_. Demonstrations at International Conference on the Foundations of Software Engineering 2024, ACM, New York, NY, July 2024
 
 ## Setup
 
@@ -23,3 +24,6 @@ Software requirements are documented in the [REQUIREMENTS.md](REQUIREMENTS.md) f
 Basically, you will have to install Java and Maven, or alternatively Nix or Docker.
 
 Installation instructions are documented in the [INSTALL.md](INSTALL.md) file.
+
+[Preprint]: https://github.com/SoftVarE-Group/Papers/raw/main/2024/2024-FSE-Bittner.pdf
+[DiffDetectiveWebsite]: https://variantsync.github.io/DiffDetective/
