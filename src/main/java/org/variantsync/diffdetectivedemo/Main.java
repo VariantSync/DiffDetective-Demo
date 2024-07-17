@@ -1,6 +1,8 @@
 package org.variantsync.diffdetectivedemo;
 
 import org.eclipse.jgit.diff.DiffAlgorithm;
+import org.variantsync.diffdetective.AnalysisRunner;
+import org.variantsync.diffdetective.analysis.Analysis;
 import org.variantsync.diffdetective.diff.result.DiffParseException;
 import org.variantsync.diffdetective.show.Show;
 import org.variantsync.diffdetective.show.engine.GameEngine;
@@ -49,5 +51,16 @@ public class Main
 
         showDiff(pathBefore, pathAfter);
         showDiff(VariationTree.fromFile(pathBefore),VariationTree.fromFile(pathAfter));
+
+        /*
+        AnalysisRunner.run(
+                new AnalysisRunner.Options(
+                        Path.of("data", "repos"),
+                        Path.of("data", "output"),
+                        Path.of("data", "demo-dataset.md")
+                ),
+                (repository, path) -> Analysis.forEachCommit(() -> DemoAnalysis.Create(repository, path), 20, 8)
+        );
+        //*/
     }
 }
