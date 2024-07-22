@@ -2,6 +2,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11095172.svg)](https://doi.org/10.5281/zenodo.11095172)
 [![License](https://img.shields.io/badge/License-GNU%20LGPLv3-blue)](LICENSE.LGPL3)
 [![Preprint](https://img.shields.io/badge/Preprint-Read-purple)][Preprint]
+[![Paper](https://img.shields.io/badge/Paper-Read-purple)](https://dl.acm.org/doi/10.1145/3663529.3663813)
+[![Slides](https://img.shields.io/badge/Slides-Here-purple)](https://github.com/SoftVarE-Group/Slides/raw/main/2024/2024-07-17-FSE-DiffDetective.pdf)
 
 <img padding="10" align="right" src="https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_evaluated_reusable_v1_1.png" alt="ACM Artifacts Evaluated Reusable" width="114" height="113"/>
 
