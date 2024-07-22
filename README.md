@@ -16,7 +16,7 @@ There is a screencast available on YouTube, guiding you through the demo's setup
 
 To learn more about DiffDetective you may either head to it's [website][DiffDetectiveWebsite] or read our accompanying paper (a preprint is available [here][Preprint]):
 
-> P. M. Bittner, A. Schultheiß, B. Moosherr, T. Kehrer, T. Thüm. _Variability-Aware Differencing with DiffDetective_. Demonstrations at International Conference on the Foundations of Software Engineering 2024, ⭐ [Best Demo Paper](https://2024.esec-fse.org/track/fse-2024-demonstrations?#Awards) ⭐, ACM, New York, NY, July 2024
+> P. M. Bittner, A. Schultheiß, B. Moosherr, T. Kehrer, T. Thüm. _Variability-Aware Differencing with DiffDetective_. Demonstrations at International Conference on the Foundations of Software Engineering 2024, ⭐ [Best Demo Paper](https://2024.esec-fse.org/info/awards) ⭐, ACM, New York, NY, July 2024
 
 ## Setup
 
