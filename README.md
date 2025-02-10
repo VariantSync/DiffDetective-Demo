@@ -8,7 +8,14 @@ This demo comes with a screencast available on YouTube, guiding you through the 
 [![DiffDetective Demonstration](docs/yt_thumbnail.png)](https://www.youtube.com/watch?v=q6ight5EDQY)
 
 
-## Setup Steps
+## Nix Setup
+In case you have the Nix package manager installed, you can build and run the demo with
+```
+nix-build
+./result/bin/DiffDetective-Demo
+```
+
+## Manual Setup
 
 ### Install Required software:
 - [Maven](https://maven.apache.org/) which is also integrated in [Eclipse](https://projects.eclipse.org/projects/technology.m2e) and [Intellij](https://www.jetbrains.com/help/idea/maven-support.html)

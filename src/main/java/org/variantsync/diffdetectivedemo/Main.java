@@ -11,7 +11,7 @@ import org.variantsync.diffdetective.variation.diff.VariationDiff;
 import org.variantsync.diffdetective.variation.diff.construction.JGitDiff;
 import org.variantsync.diffdetective.variation.diff.parse.VariationDiffParseOptions;
 import org.variantsync.diffdetective.variation.tree.VariationTree;
-import truediffdetective.TrueDiffDetective;
+import org.variantsync.truediffdetective.TrueDiffDetective;
 
 import java.io.IOException;
 import java.nio.file.Path;
